@@ -1,5 +1,5 @@
 # resume-builder
-
+This app will build a customized resume based on the job description.
 ## App Description
 
 - The UI will use lists and checkboxes to select what content should be in the resume
