@@ -1,0 +1,87 @@
+{
+    "Personal Information": {
+        "Name": "Jon Doe",
+        "Email": "email@domain.com",
+        "Phone": "(123) 456-7890",
+        "Address": "City, ST",
+        "LinkedIn": "linkedin.com/in/jondoe",
+        "GitHub": "github.com/jondoe"
+    },
+    "Education": {
+        "grad": {
+            "School": "Some University",
+            "Address": "City, ST",
+            "Dates": "September 2021 - Expected May 2023",
+            "Degree": "Master of Science",
+            "Major": "Computer Science",
+            "GPA": "4.0",
+            "Relevant Courses": [
+                "Data Structures and Algorithms",
+                "Copmputer Architecture",
+                "Operating Systems"
+            ]
+        },
+        "undergrad": {
+            "School": "",
+            "Address": "",
+            "Dates": "",
+            "Degree": "",
+            "Major": "",
+            "GPA": "",
+            "Relevant Courses": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "Work Experience": {
+        "company1": {
+            "Company": "Company 1",
+            "Address": "City, ST",
+            "Dates": "May 2021 - August 2021",
+            "Job Title": "Software Development Intern",
+            "Skills": [],
+            "Bullets": []
+        },
+        "company2": {
+            "Company": "",
+            "Address": "",
+            "Dates": "",
+            "Job Title": "",
+            "Skills": [
+                "",
+                "",
+                ""
+            ],
+            "Bullets": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "Skills": {
+        "Programming Languages": []
+    },
+    "Projects": {
+        "project1": {
+            "Name": "",
+            "Organization": "",
+            "Dates": "",
+            "GitHub": "",
+            "Summary": "",
+            "Bullets": [],
+            "Skills": []
+        },
+        "project2": {
+            "Name": "",
+            "Organization": "",
+            "Dates": "",
+            "GitHub": "",
+            "Summary": "",
+            "Bullets": [],
+            "Skills": []
+        }
+    }
+}
