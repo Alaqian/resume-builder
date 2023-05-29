@@ -41,8 +41,19 @@
             "Address": "City, ST",
             "Dates": "May 2021 - August 2021",
             "Job Title": "Software Development Intern",
-            "Skills": [],
-            "Bullets": []
+            "Skills": [
+                "Python",
+                "React",
+                "Django",
+                "PostgreSQL",
+                "Docker",
+                "Jenkins"
+            ],
+            "Bullets": [
+                "Developed a web application using React, Django, and PostgreSQL to display data from a REST API",
+                "Created a Python script to automate the process of generating a report from a database",
+                "Implemented a Docker container to run a Jenkins pipeline to build and deploy the web application"
+            ]
         },
         "company2": {
             "Company": "",
@@ -62,17 +73,63 @@
         }
     },
     "Skills": {
-        "Programming Languages": []
+        "Programming Languages": [
+            "Javascript",
+            "Python",
+            "Java",
+            "SQL",
+            "C#"
+        ],
+        "Frontend Development": [
+            "React",
+            "Angular",
+            "Vue.js",
+            "jQuery"
+        ],
+        "Backend Development": [
+            "Node.js",
+            "Express.js",
+            "ASP.NET",
+            "Flask",
+            "Django"
+        ],
+        "Databases": [
+            "Oracle",
+            "MySQL",
+            "MongoDB",
+            "PostgreSQL"
+        ],
+        "Tools": [
+            "Git",
+            "Docker",
+            "Jenkins",
+            "Jira",
+            "Confluence"
+        ],
+        "Operating Systems": [
+            "Windows",
+            "Linux",
+            "MacOS"
+        ]
     },
     "Projects": {
         "project1": {
-            "Name": "",
-            "Organization": "",
-            "Dates": "",
-            "GitHub": "",
-            "Summary": "",
-            "Bullets": [],
-            "Skills": []
+            "Name": "Resume Builder",
+            "Organization": "some organization",
+            "Dates": "October 2018 - December 2019",
+            "GitHub": "https://github.com/jondoe/test-project",
+            "Summary": "Created a web application to generate a customizable resume",
+            "Bullets": [
+                "Developed a web application using React, Node.js, and MongoDB to generate a resume",
+                "Implemented a REST API to store and retrieve resume data from a database",
+                "Created a Python script to automate the process of generating a report from a database"
+            ],
+            "Skills": [
+                "React",
+                "Node.js",
+                "MongoDB",
+                "Python"
+            ]
         },
         "project2": {
             "Name": "",
