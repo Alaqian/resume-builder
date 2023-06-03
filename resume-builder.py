@@ -1,49 +1,86 @@
-"""
-This app will build a customized resume based on the job description.
-- The UI will use lists and checkboxes to select what content should be in the resume
-- The app will show the preview of the resume as it is being built in letter size
-- At the top of the app, there will be a radio button to select the layout of the app. This will change whether the preview is on top, bottom, right or left
-- The app will tell you if the resume is longer than one page
-- The resume has 4 sections
-  1. Education
-  2. Work Experience
-  3. Skills
-  4. Projects
-- Each entry in Education, Work Experience and project will be a separate block that can be added or removed in the resume using a drop down menu.
-- Each block will have the organization name, address, start date and end date on the first line
-- For Education, the degree, major, minor, GPA will be on the second line. On the third line, will be relevant courses which can be added or removed using a checkbox.
-- For Work Experience/projects the job title/project name and skills will be on the second line followed by bullet points. Skills and bullet points can be added or removed using a checkbox. Each bullet point can be edited
-- Each section, block, skill and bullet point can be moved by dragging and dropping
-- The Skills section will have a list of skills that can be added or removed using a checkbox
-- Skills will be grouped into categories: Programming Languages, Packages, Frameworks, Tools
-- Depending on the skills selected, the app will suggest work experience/projects that use those skills
-- All this information will be stored locally in one or more files and more information can be added or edited with the app"""
+import json
 
-import tkinter as tk
+def generate_resume(json_file, output_file):
+    # Read the JSON file
+    with open(json_file, 'r') as file:
+        data = json.load(file)
+    
+    # Initialize the resume markdown string
+    resume_md = ''
+    
+    # Personal Information section
+    personal_info = data.get('Personal Information')
+    if personal_info:
+        resume_md += '## Personal Information\n\n'
+        for key, value in personal_info.items():
+            resume_md += f"- **{key}:** {value}\n"
+        resume_md += '\n'
+    
+    # Education section
+    education = data.get('Education')
+    if education:
+        resume_md += '## Education\n\n'
+        for key, value in education.items():
+            resume_md += f"### {key.capitalize()}\n\n"
+            for field, field_value in value.items():
+                if field == 'Relevant Courses':
+                    resume_md += f"- **{field}:**\n"
+                    for course in field_value:
+                        resume_md += f"  - {course}\n"
+                else:
+                    resume_md += f"- **{field}:** {field_value}\n"
+            resume_md += '\n'
+    
+    # Work Experience section
+    work_experience = data.get('Work Experience')
+    if work_experience:
+        resume_md += '## Work Experience\n\n'
+        for key, value in work_experience.items():
+            resume_md += f"### {value['Job Title']}\n\n"
+            resume_md += f"- **Company:** {value['Company']}\n"
+            resume_md += f"- **Address:** {value['Address']}\n"
+            resume_md += f"- **Dates:** {value['Dates']}\n"
+            resume_md += '- **Skills:**\n'
+            for skill in value['Skills']:
+                resume_md += f"  - {skill}\n"
+            resume_md += '- **Responsibilities:**\n'
+            for bullet in value['Bullets']:
+                resume_md += f"  - {bullet}\n"
+            resume_md += '\n'
+    
+    # Skills section
+    skills = data.get('Skills')
+    if skills:
+        resume_md += '## Skills\n\n'
+        for category, category_skills in skills.items():
+            resume_md += f"### {category}\n\n"
+            for skill in category_skills:
+                resume_md += f"- {skill}\n"
+            resume_md += '\n'
+    
+    # Projects section
+    projects = data.get('Projects')
+    if projects:
+        resume_md += '## Projects\n\n'
+        for key, value in projects.items():
+            resume_md += f"### {value['Name']}\n\n"
+            resume_md += f"- **Organization:** {value['Organization']}\n"
+            resume_md += f"- **Dates:** {value['Dates']}\n"
+            resume_md += f"- **GitHub:** [{value['GitHub']}]({value['GitHub']})\n"
+            resume_md += '- **Skills:**\n'
+            for skill in value['Skills']:
+                resume_md += f"  - {skill}\n"
+            resume_md += '- **Responsibilities:**\n'
+            for bullet in value['Bullets']:
+                resume_md += f"  - {bullet}\n"
+            resume_md += '\n'
+    
+    # Save the resume to a file
+    with open(output_file, 'w') as file:
+        file.write(resume_md)
 
-# Create the main window
-def create_main_window():
-    root = tk.Tk()
-    root.title("Resume Customizer")
-    # Set window dimensions
-    root.geometry("1400x900")
-
-    # Add widgets and functionality here
-        # Create a Listbox
-    resume_sections = tk.Listbox(root)
-    resume_sections.pack()
-
-    # Create Checkbuttons
-    checkbox_1 = tk.Checkbutton(root, text="Education")
-    checkbox_1.pack()
-
-    checkbox_2 = tk.Checkbutton(root, text="Work Experience")
-    checkbox_2.pack()
-
-    # Create Radiobuttons
-    radio_button_1 = tk.Radiobutton(root, text="Top", value="top")
-    radio_button_2 = tk.Radiobutton(root, text="Bottom", value="bottom")
-
-    root.mainloop()
-
-create_main_window()
+# Usage example
+json_file = 'resume_data.json'
+output_file = 'resume.md'
+generate_resume(json_file, output_file)
+print(f"Resume saved to {output_file}")
